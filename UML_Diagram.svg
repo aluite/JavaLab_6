@@ -1,0 +1,108 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1050" viewBox="0 0 1500 1050">
+  <defs>
+    <style>
+      .title{font: bold 30px Arial,sans-serif; fill:#172033}
+      .subtitle{font:16px Arial,sans-serif; fill:#586174}
+      .classbox{fill:#fff;stroke:#26364a;stroke-width:2.2}
+      .head{fill:#eaf0f7;stroke:#26364a;stroke-width:2.2}
+      .name{font:bold 21px Arial,sans-serif;fill:#172033}
+      .stereo{font:italic 14px Arial,sans-serif;fill:#586174}
+      .body{font:17px Consolas,monospace;fill:#202b3c}
+      .small{font:14px Arial,sans-serif;fill:#586174}
+      .link{stroke:#35465d;stroke-width:2.2;fill:none}
+      .dash{stroke-dasharray:8 6}
+      .label{font:15px Arial,sans-serif;fill:#35465d}
+    </style>
+  </defs>
+  <rect width="1500" height="1050" fill="#f7f9fc"/>
+  <text x="750" y="52" text-anchor="middle" class="title">UML-диаграмма классов</text>
+  <text x="750" y="80" text-anchor="middle" class="subtitle">Система измерения и отображения температуры</text>
+
+  <!-- Interface -->
+  <rect x="565" y="120" width="370" height="155" rx="5" class="classbox"/>
+  <rect x="565" y="120" width="370" height="62" rx="5" class="head"/>
+  <text x="750" y="145" text-anchor="middle" class="stereo">&lt;&lt;interface&gt;&gt;</text>
+  <text x="750" y="169" text-anchor="middle" class="name">ITemperatureMeasure</text>
+  <line x1="565" y1="182" x2="935" y2="182" class="link"/>
+  <text x="585" y="210" class="body">+ setValue(): void</text>
+  <text x="585" y="240" class="body">+ getValue(): double</text>
+
+  <!-- TemperatureMeasure -->
+  <rect x="525" y="405" width="450" height="330" rx="5" class="classbox"/>
+  <rect x="525" y="405" width="450" height="58" rx="5" class="head"/>
+  <text x="750" y="442" text-anchor="middle" class="name">TemperatureMeasure</text>
+  <line x1="525" y1="463" x2="975" y2="463" class="link"/>
+  <text x="550" y="495" class="body">- h: Sensor</text>
+  <text x="550" y="525" class="body">- measure: MeasureCount</text>
+  <line x1="525" y1="545" x2="975" y2="545" class="link"/>
+  <text x="550" y="580" class="body">+ TemperatureMeasure(h: Sensor)</text>
+  <text x="550" y="612" class="body">+ getNumber(): int</text>
+  <text x="550" y="644" class="body">+ getValue(): double</text>
+  <text x="550" y="676" class="body">+ setValue(): void</text>
+  <text x="550" y="708" class="body">+ getTotal(): int</text>
+
+  <!-- Sensor -->
+  <rect x="75" y="430" width="340" height="220" rx="5" class="classbox"/>
+  <rect x="75" y="430" width="340" height="55" rx="5" class="head"/>
+  <text x="245" y="465" text-anchor="middle" class="name">Sensor</text>
+  <line x1="75" y1="485" x2="415" y2="485" class="link"/>
+  <text x="98" y="520" class="body">- value: int</text>
+  <line x1="75" y1="540" x2="415" y2="540" class="link"/>
+  <text x="98" y="575" class="body">+ Sensor()</text>
+  <text x="98" y="607" class="body">+ setValue(value: int): void</text>
+  <text x="98" y="637" class="body">+ getValue(): int</text>
+
+  <!-- MeasureCount -->
+  <rect x="1085" y="430" width="340" height="250" rx="5" class="classbox"/>
+  <rect x="1085" y="430" width="340" height="55" rx="5" class="head"/>
+  <text x="1255" y="465" text-anchor="middle" class="name">MeasureCount</text>
+  <line x1="1085" y1="485" x2="1425" y2="485" class="link"/>
+  <text x="1108" y="520" class="body">- number: int</text>
+  <text x="1108" y="550" class="body">- total: int {static}</text>
+  <line x1="1085" y1="570" x2="1425" y2="570" class="link"/>
+  <text x="1108" y="605" class="body">+ MeasureCount()</text>
+  <text x="1108" y="635" class="body">+ increment(): void</text>
+  <text x="1108" y="665" class="body">+ getNumber(): int</text>
+
+  <!-- ShowTemperature -->
+  <rect x="75" y="805" width="390" height="145" rx="5" class="classbox"/>
+  <rect x="75" y="805" width="390" height="55" rx="5" class="head"/>
+  <text x="270" y="840" text-anchor="middle" class="name">ShowTemperature</text>
+  <line x1="75" y1="860" x2="465" y2="860" class="link"/>
+  <text x="98" y="900" class="body">+ show(t: TemperatureMeasure): void</text>
+
+  <!-- Main -->
+  <rect x="1035" y="805" width="390" height="145" rx="5" class="classbox"/>
+  <rect x="1035" y="805" width="390" height="55" rx="5" class="head"/>
+  <text x="1230" y="840" text-anchor="middle" class="name">Main</text>
+  <line x1="1035" y1="860" x2="1425" y2="860" class="link"/>
+  <text x="1058" y="900" class="body">+ main(args: String[]): void {static}</text>
+
+  <!-- Interface realization -->
+  <path d="M750 405 L750 300" class="link dash"/>
+  <path d="M740 315 L750 300 L760 315" class="link"/>
+  <text x="770" y="340" class="label">реализация</text>
+
+  <!-- Aggregation Sensor -->
+  <path d="M525 585 L415 585" class="link"/>
+  <polygon points="525,585 540,576 555,585 540,594" fill="#f7f9fc" stroke="#35465d" stroke-width="2"/>
+  <text x="430" y="570" class="label">агрегация</text>
+
+  <!-- Composition MeasureCount -->
+  <path d="M975 620 L1085 620" class="link"/>
+  <polygon points="975,620 990,611 1005,620 990,629" fill="#35465d" stroke="#35465d" stroke-width="2"/>
+  <text x="1005" y="600" class="label">композиция</text>
+
+  <!-- Dependency ShowTemperature -->
+  <path d="M465 840 C520 840 500 760 600 735" class="link dash"/>
+  <path d="M586 737 L600 735 L592 748" class="link"/>
+  <text x="465" y="790" class="label">зависимость</text>
+
+  <!-- Main dependencies -->
+  <path d="M1035 840 C990 840 1010 770 930 735" class="link dash"/>
+  <path d="M944 736 L930 735 L938 748" class="link"/>
+  <text x="945" y="790" class="label">создание объектов</text>
+
+  <text x="750" y="1010" text-anchor="middle" class="small">Видимость: + public, - private. Пунктирная стрелка — зависимость / реализация.</text>
+</svg>
